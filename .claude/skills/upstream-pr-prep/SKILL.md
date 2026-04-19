@@ -34,7 +34,7 @@ Run these checks and record pass/fail for each:
    c. **`__init__` calls `Boxes.__init__(self)`** and at least one `addSettingsArgs` — grep for both.
    d. **`render()` method exists** — grep for `def render`.
    e. **Listed in `examples.yml`** — the class name appears as a YAML key, or is under `__ALL__.skipGenerators` / `brokenGenerators` (note if skipped). Use `python -c "import yaml; d=yaml.safe_load(open('examples.yml')); print('<Class>' in d or '<Class>' in d.get('__ALL__',{}).get('skipGenerators',[]) or '<Class>' in d.get('__ALL__',{}).get('brokenGenerators',[]))"`.
-   f. **Reference SVG exists** — `tests/data/<Class>.svg` is present and is not 0 bytes.
+   f. **Reference SVG exists** — `examples/<Class>.svg` is present and is not 0 bytes. (Note: `tests/data/<Class>.svg` is auto-written on every test run; it is NOT the reference.)
 
 4. **Pre-commit clean on changed files** —
    `SKIP=pytest pre-commit run --files $changed`. If fails, report the pre-commit output verbatim (trim to 40 lines).

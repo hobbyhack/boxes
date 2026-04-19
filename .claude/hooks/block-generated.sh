@@ -13,8 +13,10 @@ case "$file" in
     cat >&2 <<EOF
 Blocked: "$file" is a generated artifact, not hand-edited source.
 
-- tests/data/*.svg  -> regenerate with: scripts/boxes <GenName> -o tests/data/<GenName>.svg
-  (see the boxes-testing skill for the full workflow; only regenerate after an intentional change.)
+- tests/data/*.svg  -> auto-written by tests/test_svg.py on every run. Never edit.
+                       If you changed a generator intentionally and need to update its
+                       *reference*, copy tests/data/<Name>.svg -> examples/<Name>.svg
+                       after the test run (see the boxes-testing skill).
 - locale/**/*.mo    -> compiled from po/; do not edit.
 - po/*.pot          -> regenerate with: scripts/boxes2pot
 - inkex/*.inx       -> regenerate with: scripts/boxes2inkscape
